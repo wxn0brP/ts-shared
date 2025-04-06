@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -19,11 +19,11 @@ jobs:
       - name: Install deps
         run: npm i
 
-      - name: Build all
-        run: npm run build
-
       - name: Generate dist output
         run: node .github/scripts/generate-dist.js
+
+      - name: Build all
+        run: npm run build
 
       - name: Deploy to dist branch
         run: |
@@ -32,9 +32,13 @@ jobs:
 
           git checkout --orphan dist
 
+          rm package.json
+          rm -rf packages
+          cp -r dist/* .
+
           git reset -q HEAD --
 
-          FILES="package.json index.ts dist"
+          FILES="package.json index.d.ts index.js packages"
           git add -f -A $FILES
 
           git commit -m "Deploy to dist"
