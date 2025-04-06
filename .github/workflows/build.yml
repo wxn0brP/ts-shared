@@ -3,61 +3,41 @@ name: Build and Deploy Dist
 on:
   push:
     branches: [master]
-  
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build and publish to dist branch
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
+          cache: yarn
 
-      - name: Install dependencies
+      - name: Install deps
         run: yarn install
 
-      - name: Generate exports in package.json
-        run: |
-          echo "Generating exports..."
-          exports=$(ls packages | jq -R . | jq -s 'reduce .[] as $item ({}; .["./" + $item] = "./packages/" + $item + "/index.js")')
-          jq --argjson exports "$exports" '.exports = ($exports + {".": "./index.js"})' package.json > package.tmp.json
-          mv package.tmp.json package.json
+      - name: Build all
+        run: yarn tsc --build
 
-      - name: Generate index.ts with re-exports
-        run: |
-          echo "// Auto-generated root exports" > index.ts
-          for dir in packages/*; do
-            name=$(basename "$dir")
-            echo "export * as $name from './packages/$name/index.js';" >> index.ts
-          done
-          cat index.ts
-
-      - name: Compile TypeScript
-        run: npm run build
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist
+      - name: Generate dist output
+        run: node .github/scripts/generate-dist.js
 
       - name: Deploy to dist branch
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git switch --orphan dist
-          git reset
-          cp -r dist/* .
-          cp package.json .
-          cp index.js .
-          cp index.d.ts .
-          git add .
-          git commit -m "Build output"
-          git push -f origin dist
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git checkout --orphan dist
+
+          git reset -q HEAD --
+
+          FILES="package.json index.ts dist"
+          git add -f -A $FILES
+
+          git commit -m "Deploy to dist"
+          git push origin dist --force
+
