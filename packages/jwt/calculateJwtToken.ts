@@ -1,7 +1,7 @@
 import os from "os";
 import crypto from "crypto";
 
-function generateJwtSecret(){
+function generateJwtSecret() {
     const macAddresses = os.networkInterfaces();
     const hostname = os.hostname();
     const cpuModels = os.cpus()[0].model;

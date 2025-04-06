@@ -7,7 +7,7 @@
 	"private": true,
 	"dependencies": {
 		"@wxn0brp/db": "^0.4.2",
-		"jose": "^6.0.10"
+		"jose": "^5.10.0"
 	},
 	"devDependencies": {
 		"@types/node": "^22.14.0",
