@@ -48,9 +48,9 @@ allExports['.'] = './index.js';
 fs.writeFileSync('index.ts', indexTs);
 
 const combinedPkg = {
-    name: "@master/ts-shared",
+    name: "@wxn0brp/ts-shared",
     version: readJSON(path.join(ROOT, 'package.json')).version,
-    description: "Master TS shared library",
+    description: "wxn0brP TS shared/utils library",
     license: "MIT",
     type: "module",
     main: "index.js",
