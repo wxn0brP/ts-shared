@@ -1,0 +1,16 @@
+{
+	"name": "@wxn0brp/ts-shared-jwt",
+	"version": "0.0.1",
+	"main": "index.js",
+	"author": "wxn0brP",
+	"license": "MIT",
+	"private": true,
+	"dependencies": {
+		"@wxn0brp/db": "^0.4.2",
+		"jose": "^6.0.10"
+	},
+	"devDependencies": {
+		"@types/node": "^22.14.0",
+		"typescript": "^5.2.2"
+	}
+}
