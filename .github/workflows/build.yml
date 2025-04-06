@@ -40,7 +40,7 @@ jobs:
           cat index.ts
 
       - name: Compile TypeScript
-        run: yarn tsc --build
+        run: npm run build
 
       - name: Deploy to dist branch
         run: |

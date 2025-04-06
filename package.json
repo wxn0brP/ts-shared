@@ -5,6 +5,9 @@
 	"type": "module",
 	"license": "MIT",
 	"private": true,
+	"scripts": {
+		"build": "npx tsc"
+	},
 	"workspaces": [
 		"packages/*"
 	],
