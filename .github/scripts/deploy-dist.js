@@ -4,7 +4,7 @@ import { execSync } from "child_process";
 
 const ROOT = process.cwd();
 const DIST_PACKAGES = path.join(ROOT, "dist", "packages");
-const ORIGIN_URL = "git@github.com:wxn0brP/ts-shared.git";
+const ORIGIN_URL = "https://github.com/wxn0brP/ts-shared.git";
 
 const packages = fs.readdirSync(DIST_PACKAGES).filter(pkg =>
     fs.statSync(path.join(DIST_PACKAGES, pkg)).isDirectory()
