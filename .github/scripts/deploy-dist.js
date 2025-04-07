@@ -4,7 +4,8 @@ import { execSync } from "child_process";
 
 const ROOT = process.cwd();
 const DIST_PACKAGES = path.join(ROOT, "dist", "packages");
-const ORIGIN_URL = "https://github.com/wxn0brP/ts-shared.git";
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const ORIGIN_URL = `https://x-access-token:${GITHUB_TOKEN}@github.com/wxn0brP/ts-shared.git`;
 
 const packages = fs.readdirSync(DIST_PACKAGES).filter(pkg =>
     fs.statSync(path.join(DIST_PACKAGES, pkg)).isDirectory()
@@ -15,6 +16,7 @@ for (const pkg of packages) {
     const branch = `dist-${pkg}`;
 
     console.log(`\n[+] Deploying ${pkg} → ${branch}`);
+    console.log(`\t${dir}`);
 
     // Init new repo inside package dir
     execSync("git init", { cwd: dir });
