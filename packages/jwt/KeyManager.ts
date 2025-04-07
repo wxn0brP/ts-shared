@@ -1,8 +1,8 @@
 import { generateKeyPair, exportSPKI, exportPKCS8, importSPKI, importPKCS8 } from "jose";
-import { DataBase } from "@wxn0brp/db";
+import { Valthera } from "@wxn0brp/db";
 
 class KeyManager {
-    constructor(private db: DataBase) { }
+    constructor(private db: Valthera) { }
 
     async getKeyPair(index: number) {
         const keyPair = await this.db.findOne("encryptionKeys", { index });
