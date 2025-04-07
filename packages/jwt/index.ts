@@ -12,14 +12,16 @@ export class JwtManager<K = KeyIndex> {
     private keyIndex: K;
 
     constructor(
-        db: Valthera,
         keyIndex: K = null,
         secretKey: string = process.env.JWT
     ) {
         this.keyIndex = keyIndex || KeyIndex as K;
-        this.keyManager = new KeyManager(db);
         this.secretKey = new TextEncoder().encode(secretKey);
-        this.keyManager.initKeyPairs<K>(keyIndex);
+    }
+
+    async init(db: Valthera) {
+        this.keyManager = new KeyManager(db);
+        await this.keyManager.initKeyPairs<K>(this.keyIndex);
     }
 
     /**
