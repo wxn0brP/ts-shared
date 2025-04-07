@@ -1,6 +1,6 @@
 import { SignJWT, jwtVerify, jwtDecrypt, EncryptJWT, JWTPayload } from "jose";
 import KeyManager from "./KeyManager.js";
-import { DataBase } from "@wxn0brp/db";
+import { Valthera } from "@wxn0brp/db";
 
 export enum KeyIndex {
     GENERAL,
@@ -9,12 +9,14 @@ export enum KeyIndex {
 export class JwtManager<K = KeyIndex> {
     public keyManager: KeyManager;
     private secretKey: Uint8Array;
+    private keyIndex: K;
 
     constructor(
-        db: DataBase,
-        private keyIndex: K,
+        db: Valthera,
+        keyIndex: K = null,
         secretKey: string = process.env.JWT
     ) {
+        this.keyIndex = keyIndex || KeyIndex as K;
         this.keyManager = new KeyManager(db);
         this.secretKey = new TextEncoder().encode(secretKey);
         this.keyManager.initKeyPairs<K>(keyIndex);

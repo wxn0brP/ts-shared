@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"private": true,
 	"dependencies": {
-		"@wxn0brp/db": "^0.4.2",
+		"@wxn0brp/db": ">=0.5.1",
 		"jose": "^5.10.0"
 	},
 	"devDependencies": {
