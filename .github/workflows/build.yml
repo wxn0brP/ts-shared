@@ -44,3 +44,5 @@ jobs:
           git commit -m "Deploy to dist"
           git push origin dist --force
 
+      - name: Deploy to pkg dist branch
+        run: node .github/scripts/deploy-dist.js
