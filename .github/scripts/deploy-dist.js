@@ -1,34 +1,32 @@
-import fs from 'fs';
-import path from 'path';
-import { execSync } from 'child_process';
+import fs from "fs";
+import path from "path";
+import { execSync } from "child_process";
 
-const packagesDir = path.join(process.cwd(), 'dist', 'packages');
-const packageDirs = fs.readdirSync(packagesDir).filter(pkg =>
-    fs.statSync(path.join(packagesDir, pkg)).isDirectory()
+const ROOT = process.cwd();
+const DIST_PACKAGES = path.join(ROOT, "dist", "packages");
+const ORIGIN_URL = "git@github.com:wxn0brP/ts-shared.git";
+
+const packages = fs.readdirSync(DIST_PACKAGES).filter(pkg =>
+    fs.statSync(path.join(DIST_PACKAGES, pkg)).isDirectory()
 );
 
-for (const pkgName of packageDirs) {
-    const targetDir = path.join(packagesDir, pkgName);
-    const branch = `dist-${pkgName}`;
+for (const pkg of packages) {
+    const dir = path.join(DIST_PACKAGES, pkg);
+    const branch = `dist-${pkg}`;
 
-    console.log(`\nDeploying ${pkgName} to branch ${branch}...`);
+    console.log(`\n[+] Deploying ${pkg} → ${branch}`);
 
-    execSync(`git config --global user.name "github-actions[bot]"`);
-    execSync(`git config --global user.email "github-actions[bot]@users.noreply.github.com"`);
+    // Init new repo inside package dir
+    execSync("git init", { cwd: dir });
+    execSync('git config user.name "github-actions[bot]"', { cwd: dir });
+    execSync('git config user.email "github-actions[bot]@users.noreply.github.com"', { cwd: dir });
 
-    // Checkout orphan branch
-    execSync(`git checkout --orphan ${branch}`);
+    // Stage and commit all
+    execSync("git add -A", { cwd: dir });
+    execSync(`git commit -m "Deploy ${pkg}"`, { cwd: dir });
 
-    // Clear current index
-    execSync(`git reset -q HEAD --`);
-
-    // Remove everything and copy only that package
-    fs.rmSync('.', { recursive: true, force: true });
-    fs.mkdirSync('temp', { recursive: true });
-    execSync(`cp -r ${targetDir}/* ./`);
-
-    // Force add and commit
-    execSync(`git add -f -A`);
-    execSync(`git commit -m "Deploy ${pkgName} to ${branch}"`);
-    execSync(`git push origin ${branch} --force`);
+    // Add remote and push to proper branch
+    execSync(`git remote add origin ${ORIGIN_URL}`, { cwd: dir });
+    execSync(`git branch -M ${branch}`, { cwd: dir });
+    execSync(`git push origin ${branch} --force`, { cwd: dir });
 }
