@@ -1,0 +1,18 @@
+{
+  "name": "@wxn0brp/ts-shared",
+  "version": "0.0.1",
+  "description": "wxn0brP TS shared/utils library",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    "./jwt": "./packages/jwt/index.js",
+    ".": "./index.js"
+  },
+  "dependencies": {
+    "jose": "^5.10.0"
+  },
+  "peerDependencies": {
+    "@wxn0brp/db": ">=0.5.1"
+  }
+}
