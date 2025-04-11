@@ -6,10 +6,13 @@
 	"license": "MIT",
 	"private": true,
 	"dependencies": {
-		"@wxn0brp/db": ">=0.5.1",
 		"jose": "^5.10.0"
 	},
+	"peerDependencies": {
+		"@wxn0brp/db": ">=0.5.1"
+	},
 	"devDependencies": {
+		"@wxn0brp/db": ">=0.5.1",
 		"@types/node": "^22.14.0",
 		"typescript": "^5.2.2"
 	}

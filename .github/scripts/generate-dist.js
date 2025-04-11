@@ -8,6 +8,7 @@ fs.mkdirSync("dist");
 
 const allExports = {};
 const rootDeps = {};
+const rootPeerDeps = {};
 
 function readJSON(p) {
     return JSON.parse(fs.readFileSync(p, 'utf-8'));
@@ -40,6 +41,14 @@ for (const name of packageNames) {
             }
         }
     }
+
+    if (pkgJson.peerDependencies) {
+        for (const [dep, ver] of Object.entries(pkgJson.peerDependencies)) {
+            if (!rootPeerDeps[dep] || rootPeerDeps[dep] < ver) {
+                rootPeerDeps[dep] = ver;
+            }
+        }
+    }
 }
 
 // Exports root
@@ -55,7 +64,8 @@ const combinedPkg = {
     type: "module",
     main: "index.js",
     exports: allExports,
-    dependencies: rootDeps
+    dependencies: rootDeps,
+    peerDependencies: rootPeerDeps
 };
 
 writeJSON('dist/package.json', combinedPkg);
