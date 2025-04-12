@@ -36,7 +36,7 @@ for (const name of packageNames) {
     patchVersion += parseInt(patch);
 
     // Re-export
-    indexTs += `export * as ${name} from './packages/${name}/index.js';\n`;
+    indexTs += `export * as ${name.replaceAll('-', '_')} from './packages/${name}/index.js';\n`;
 
     // Exports
     allExports[`./${name}`] = `./packages/${name}/index.js`;
