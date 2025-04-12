@@ -28,6 +28,9 @@ Utilities for managing socket.io events, including spam detection, event limitin
 - **SocketEventEngine**: Simplifies adding and managing socket events with built-in error handling.
 - **ValidError**: Utility for generating standardized error responses for socket events.
 
+### `@wxn0brp/wts-valid`
+Validation utilities for common data types and structures.
+
 ## Contributing
 
 Feel free to contribute by submitting issues or pull requests. Ensure your changes are well-documented and tested.
