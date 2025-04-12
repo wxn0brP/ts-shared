@@ -1,5 +1,5 @@
 {
-	"name": "@wxn0brp/ts-shared",
+	"name": "@wxn0brp/wts",
 	"version": "0.0.1",
 	"main": "./index.js",
 	"type": "module",

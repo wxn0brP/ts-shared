@@ -65,7 +65,7 @@ allExports['.'] = './index.js';
 fs.writeFileSync('index.ts', indexTs);
 
 const combinedPkg = {
-    name: "@wxn0brp/ts-shared",
+    name: "@wxn0brp/wts",
     version: `${majorVersion}.${minorVersion}.${patchVersion}`,
     description: "wxn0brP TS shared/utils library",
     license: "MIT",
