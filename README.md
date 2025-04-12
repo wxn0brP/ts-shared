@@ -21,6 +21,12 @@ Tools for managing JWT tokens, including signing, encryption, and decryption, as
 ### `@wxn0brp/wts-deep-merge`
 Deep merge utility for merging nested objects and arrays.
 
+### `@wxn0brp/wts-socket`
+Utilities for managing socket.io events, including spam detection, event limiting, and error handling.
+
+- **SocketEventLimiter**: Limits the number of times a specific event can be emitted to prevent spam.
+- **SocketEventEngine**: Simplifies adding and managing socket events with built-in error handling.
+- **ValidError**: Utility for generating standardized error responses for socket events.
 
 ## Contributing
 
