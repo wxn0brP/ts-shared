@@ -10,6 +10,10 @@ const allExports = {};
 const rootDeps = {};
 const rootPeerDeps = {};
 
+let majorVersion = 0;
+let minorVersion = 0;
+let patchVersion = 0;
+
 function readJSON(p) {
     return JSON.parse(fs.readFileSync(p, 'utf-8'));
 }
@@ -26,6 +30,10 @@ const packageNames = fs.readdirSync(PKG_DIR).filter((name) => {
 let indexTs = `// Auto-generated entrypoint\n`;
 for (const name of packageNames) {
     const pkgJson = readJSON(path.join(PKG_DIR, name, 'package.json'));
+    const [major, minor, patch] = pkgJson.version.split('.');
+    majorVersion += parseInt(major);
+    minorVersion += parseInt(minor);
+    patchVersion += parseInt(patch);
 
     // Re-export
     indexTs += `export * as ${name} from './packages/${name}/index.js';\n`;
@@ -58,7 +66,7 @@ fs.writeFileSync('index.ts', indexTs);
 
 const combinedPkg = {
     name: "@wxn0brp/ts-shared",
-    version: readJSON(path.join(ROOT, 'package.json')).version,
+    version: `${majorVersion}.${minorVersion}.${patchVersion}`,
     description: "wxn0brP TS shared/utils library",
     license: "MIT",
     type: "module",
