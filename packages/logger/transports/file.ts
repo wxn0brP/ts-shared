@@ -16,4 +16,8 @@ export class FileTransport implements Transport {
         const logLine = `${prefix} ${entry.message} ${entry.meta ? JSON.stringify(entry.meta) : ""}\n`;
         appendFileSync(this.filePath, logLine);
     }
+
+    debug(entry: LogEntry, ...any: any): void {
+        for (const data of any) this.log(Object.assign(entry, { meta: data }));
+    }
 }

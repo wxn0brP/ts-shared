@@ -1,6 +1,6 @@
 {
 	"name": "@wxn0brp/wts-logger",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"main": "index.js",
 	"author": "wxn0brP",
 	"license": "MIT",
@@ -9,8 +9,13 @@
 	"peerDependencies": {
 		"@wxn0brp/db": ">=0.5.7"
 	},
+	"peerDependenciesMeta": {
+		"@wxn0brp/db": {
+			"optional": true
+		}
+	},
 	"devDependencies": {
-		"@wxn0brp/db": ">=0.5.7",
+		"@wxn0brp/db": ">=0.6.0",
 		"@types/node": "^22.14.0",
 		"typescript": "^5.2.2"
 	}
