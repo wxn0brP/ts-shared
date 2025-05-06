@@ -1,0 +1,16 @@
+{
+	"name": "@wxn0brp/wts-socket",
+	"version": "0.0.1",
+	"main": "index.js",
+	"author": "wxn0brP",
+	"license": "MIT",
+	"private": true,
+	"peerDependencies": {
+        "node-cache": ">=5.1.2",
+        "socket.io": ">=4.7.4"
+	},
+	"devDependencies": {
+        "node-cache": ">=5.1.2",
+        "socket.io": ">=4.7.4"
+	}
+}
