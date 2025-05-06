@@ -40,7 +40,7 @@ export class Logger {
         this.loggerName = options.loggerName ?? "";
         if (options.logLevel) {
             const logLevel = options.logLevel.toUpperCase() as LogLevelName;
-            if (LogLevel[logLevel] && typeof LogLevel[logLevel] === "number") this.logLevel = LogLevel[logLevel];
+            if (typeof LogLevel[logLevel] === "number") this.logLevel = LogLevel[logLevel];
             else this.logLevel = LogLevel.ERROR;
         }
         else this.logLevel = LogLevel.ERROR;
