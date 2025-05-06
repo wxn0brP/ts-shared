@@ -1,4 +1,6 @@
 import { ConsoleTransport } from "./transports/console";
+import { ValtheraDBTransport } from "./transports/db";
+import { FileTransport } from "./transports/file";
 
 export enum LogLevel {
     ERROR,
@@ -7,6 +9,7 @@ export enum LogLevel {
     DEBUG
 }
 export type LogLevelName = keyof typeof LogLevel;
+export type LogLevelNameLowerCase = Lowercase<LogLevelName>;
 
 export interface LogEntry {
     level: LogLevelName;
@@ -19,7 +22,7 @@ export interface LogEntry {
 export interface LoggerOptions {
     transports?: Transport[];
     loggerName?: string;
-    logLevel?: LogLevelName
+    logLevel?: LogLevelName | LogLevelNameLowerCase;
 }
 
 export interface Transport {
@@ -35,7 +38,10 @@ export class Logger {
     constructor(options: LoggerOptions = {}) {
         this.transports = options.transports ?? [new ConsoleTransport()],
         this.loggerName = options.loggerName ?? "";
-        if (options.logLevel && LogLevel[options.logLevel]) this.logLevel = LogLevel[options.logLevel];
+        if (options.logLevel) {
+            const logLevel = options.logLevel.toUpperCase() as LogLevelName;
+            if (LogLevel[logLevel]) this.logLevel = LogLevel[logLevel];
+        }
         else this.logLevel = LogLevel.ERROR;
     }
 
@@ -79,5 +85,11 @@ export class Logger {
         for (const transport of this.transports) {
             await transport.debug(entry, ...any);
         }
+    }
+
+    static transports = {
+        console: ConsoleTransport,
+        file: FileTransport,
+        db: ValtheraDBTransport,
     }
 }

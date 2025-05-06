@@ -1,13 +1,13 @@
 {
 	"name": "@wxn0brp/wts-logger",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"main": "index.js",
 	"author": "wxn0brP",
 	"license": "MIT",
 	"private": true,
 	"dependencies": {},
 	"peerDependencies": {
-		"@wxn0brp/db": ">=0.5.7"
+		"@wxn0brp/db": ">=0.7.1"
 	},
 	"peerDependenciesMeta": {
 		"@wxn0brp/db": {
@@ -15,7 +15,7 @@
 		}
 	},
 	"devDependencies": {
-		"@wxn0brp/db": ">=0.6.0",
+		"@wxn0brp/db": ">=0.7.1",
 		"@types/node": "^22.14.0",
 		"typescript": "^5.2.2"
 	}
