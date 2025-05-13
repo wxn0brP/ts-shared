@@ -1,6 +1,6 @@
 {
 	"name": "@wxn0brp/wts-logger",
-	"version": "0.0.5",
+	"version": "0.1.0",
 	"main": "index.js",
 	"author": "wxn0brP",
 	"license": "MIT",
@@ -18,5 +18,15 @@
 		"@wxn0brp/db": ">=0.7.1",
 		"@types/node": "^22.14.0",
 		"typescript": "^5.2.2"
+	},
+	"exports": {
+		".": {
+			"types": "./index.d.ts",
+			"default": "./index.js"
+		},
+		"./transports/*": {
+			"types": "./transports/*.d.ts",
+			"default": "./transports/*.js"
+		}
 	}
 }

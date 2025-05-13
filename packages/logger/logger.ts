@@ -1,6 +1,4 @@
 import { ConsoleTransport } from "./transports/console";
-import { ValtheraDBTransport } from "./transports/db";
-import { FileTransport } from "./transports/file";
 
 export enum LogLevel {
     ERROR,
@@ -86,11 +84,5 @@ export class Logger {
         for (const transport of this.transports) {
             await transport.debug(entry, ...any);
         }
-    }
-
-    static transports = {
-        console: ConsoleTransport,
-        file: FileTransport,
-        db: ValtheraDBTransport,
     }
 }
