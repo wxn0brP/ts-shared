@@ -31,9 +31,6 @@ Utilities for managing socket.io events, including spam detection, event limitin
 ### `@wxn0brp/wts-valid`
 Validation utilities for common data types and structures.
 
-### `@wxn0brp/wts-logger`
-Logger utility for logging messages to different transports, including console, file, and database.
-
 ## Contributing
 
 Feel free to contribute by submitting issues or pull requests. Ensure your changes are well-documented and tested.
