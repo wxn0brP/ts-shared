@@ -1,6 +1,6 @@
 import { Valthera } from "@wxn0brp/db";
 import { ProcessDbChangesResult } from "./changes";
-import CollectionManager from "@wxn0brp/db/dist/CollectionManager";
+import CollectionManager from "@wxn0brp/db/dist/helpers/CollectionManager.js";
 
 /**
  * Save database changes

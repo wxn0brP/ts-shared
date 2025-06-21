@@ -12,11 +12,11 @@
 		"packages/*"
 	],
 	"devDependencies": {
-		"@types/node": "^22.14.0",
-		"jq": "^1.6",
-		"typescript": "^5.3.0"
+		"@types/node": "^24.0.3",
+		"jq": "^1.7.2",
+		"typescript": "^5.8.3"
 	},
 	"dependencies": {
-		"tsc-alias": "^1.8.15"
+		"tsc-alias": "^1.8.16"
 	}
 }
