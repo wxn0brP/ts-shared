@@ -6,7 +6,7 @@
         "declaration": true,
         "module": "ESNext",
         "target": "ES2022",
-        "moduleResolution": "Node",
+        "moduleResolution": "bundler",
         "esModuleInterop": true,
         "resolveJsonModule": true
     },
