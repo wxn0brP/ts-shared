@@ -1,6 +1,6 @@
 import { SignJWT, jwtVerify, jwtDecrypt, EncryptJWT, JWTPayload } from "jose";
 import KeyManager from "./KeyManager.js";
-import { Valthera } from "@wxn0brp/db";
+import { ValtheraCompatible } from "@wxn0brp/db-core";
 
 export enum KeyIndex {
     GENERAL,
@@ -19,7 +19,7 @@ export class JwtManager<K = KeyIndex> {
         this.secretKey = new TextEncoder().encode(secretKey);
     }
 
-    async init(db: Valthera) {
+    async init(db: ValtheraCompatible) {
         this.keyManager = new KeyManager(db);
         await this.keyManager.initKeyPairs<K>(this.keyIndex);
     }
@@ -56,7 +56,7 @@ export class JwtManager<K = KeyIndex> {
             if (index === 0 && this.keyIndex[0] === undefined) {
                 throw new Error("Key index 0 is not defined.");
             }
-            
+
             const keyPair = await this.keyManager.getKeyPair(index);
 
             if (!keyPair) {

@@ -1,11 +1,11 @@
 import { generateKeyPair, exportSPKI, exportPKCS8, importSPKI, importPKCS8 } from "jose";
-import { Valthera } from "@wxn0brp/db";
+import { ValtheraCompatible } from "@wxn0brp/db-core";
 
 class KeyManager {
-    constructor(private db: Valthera) { }
+    constructor(private db: ValtheraCompatible) { }
 
     async getKeyPair(index: number) {
-        const keyPair = await this.db.findOne("encryptionKeys", { index });
+        const keyPair = await this.db.findOne<any>("encryptionKeys", { index });
         if (!keyPair) return null;
 
         return {
@@ -30,7 +30,7 @@ class KeyManager {
         for (const k of Object.keys(keys)) {
             const index = keys[k];
             if (typeof index !== "number") continue;
-            const exists = await this.db.findOne("encryptionKeys", { index });
+            const exists = await this.db.findOne<any>("encryptionKeys", { index });
             if (exists) continue;
             await this.addKeyPair(index);
         }

@@ -1,12 +1,12 @@
-import { Valthera } from "@wxn0brp/db";
+import { ValtheraCompatible } from "@wxn0brp/db-core";
 import { ProcessDbChangesResult } from "./changes";
-import CollectionManager from "@wxn0brp/db/dist/helpers/CollectionManager.js";
+import CollectionManager from "@wxn0brp/db-core/helpers/CollectionManager";
 
 /**
  * Save database changes
  */
 export async function saveDbChanges(
-    db: Valthera,
+    db: ValtheraCompatible,
     doc: string,
     changes: ProcessDbChangesResult,
     idName: string = "_id"
