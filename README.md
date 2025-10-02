@@ -18,6 +18,9 @@ Utilities for processing database changes, including adding, removing, updating,
 ### `@wxn0brp/wts-jwt`
 Tools for managing JWT tokens, including signing, encryption, and decryption, as well as key management.
 
+### `@wxn0brp/wts-run-fn`
+Utilities for running functions asynchronously from strings.
+
 ### `@wxn0brp/wts-deep-merge`
 Deep merge utility for merging nested objects and arrays.
 
