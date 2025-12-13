@@ -1,0 +1,19 @@
+{
+	"name": "@wxn0brp/wts-jwt",
+	"version": "0.0.1",
+	"main": "index.js",
+	"author": "wxn0brP",
+	"license": "MIT",
+	"private": true,
+	"dependencies": {
+		"jose": "^5.10.0"
+	},
+	"peerDependencies": {
+		"@wxn0brp/db-core": ">=0.3.0"
+	},
+	"devDependencies": {
+		"@wxn0brp/db-core": ">=0.3.0",
+		"@types/node": "*",
+		"typescript": "*"
+	}
+}
