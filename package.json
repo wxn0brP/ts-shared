@@ -1,0 +1,25 @@
+{
+  "name": "@wxn0brp/wts",
+  "version": "0.0.6",
+  "description": "wxn0brP TS shared/utils library",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    "./deep-merge": "./packages/deep-merge/index.js",
+    "./jwt": "./packages/jwt/index.js",
+    "./run-fn": "./packages/run-fn/index.js",
+    "./socket": "./packages/socket/index.js",
+    "./valid": "./packages/valid/index.js",
+    "./valthera-diff": "./packages/valthera-diff/index.js",
+    ".": "./index.js"
+  },
+  "dependencies": {
+    "jose": "^5.10.0"
+  },
+  "peerDependencies": {
+    "@wxn0brp/db-core": ">=0.3.0",
+    "node-cache": ">=5.1.2",
+    "socket.io": ">=4.7.4"
+  }
+}

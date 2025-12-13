@@ -1,0 +1,17 @@
+{
+	"name": "@wxn0brp/wts-valthera-diff",
+	"version": "0.0.1",
+	"main": "index.js",
+	"author": "wxn0brP",
+	"license": "MIT",
+	"private": true,
+	"dependencies": {},
+	"peerDependencies": {
+		"@wxn0brp/db-core": ">=0.3.0"
+	},
+	"devDependencies": {
+		"@wxn0brp/db-core": ">=0.3.0",
+		"@types/node": "*",
+		"typescript": "*"
+	}
+}
