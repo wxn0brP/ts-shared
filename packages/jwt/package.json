@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"private": true,
 	"dependencies": {
-		"jose": "^5.10.0"
+		"jose": "^6.0.0"
 	},
 	"peerDependencies": {
 		"@wxn0brp/db-core": ">=0.3.0"
