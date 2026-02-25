@@ -1,5 +1,3 @@
-import { Socket_User } from "@wxn0brp/wts-socket";
-
 export interface SpamThresholds {
     warningDelay: number;
     warnLimit: number;
@@ -19,10 +17,8 @@ declare module "socket.io" {
     }
 }
 
-declare module "@wxn0brp/wts-socket" {
-    export interface Socket_User {
-        _id: string;
-    }
+export interface Socket_User {
+    _id: string;
 }
 
 export type Socket_event = `${Lowercase<string>}` & Exclude<string, `.${string}` | `${string}.`>;

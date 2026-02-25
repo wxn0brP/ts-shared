@@ -1,4 +1,0 @@
-{
-    "cmd": "yarn build",
-    "watch": ["package.json", "packages"]
-}

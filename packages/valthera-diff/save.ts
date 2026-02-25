@@ -1,6 +1,6 @@
 import { ValtheraCompatible } from "@wxn0brp/db-core";
 import { ProcessDbChangesResult } from "./changes";
-import CollectionManager from "@wxn0brp/db-core/helpers/CollectionManager";
+import { Collection } from "@wxn0brp/db-core/helpers/collection";
 
 /**
  * Save database changes
@@ -12,7 +12,7 @@ export async function saveDbChanges(
     idName: string = "_id"
 ): Promise<void> {
     const { itemsToAdd, itemsToRemove, itemsToUpdate, itemsWithRemovedFields } = changes;
-    const dbc: CollectionManager = db.c(doc);
+    const dbc: Collection = db.c(doc);
 
     // Add new items
     for (const item of itemsToAdd) {

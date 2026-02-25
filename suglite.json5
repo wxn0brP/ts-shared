@@ -1,0 +1,7 @@
+{
+    cmd: "npm run build",
+    watch: [
+        "package.json",
+        "packages",
+    ],
+}
