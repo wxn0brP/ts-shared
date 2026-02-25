@@ -1,0 +1,8 @@
+{
+	"name": "@wxn0brp/wts-run-fn",
+	"version": "0.0.1",
+	"main": "index.js",
+	"author": "wxn0brP",
+	"license": "MIT",
+	"private": true
+}
