@@ -19,7 +19,9 @@ class KeyManager {
     }
 
     async addKeyPair(index: number) {
-        const { publicKey, privateKey } = await generateKeyPair("RSA-OAEP-256");
+        const { publicKey, privateKey } = await generateKeyPair("RSA-OAEP-256", {
+            extractable: true
+        });
         const publicKeyPEM = await exportSPKI(publicKey);
         const privateKeyPEM = await exportPKCS8(privateKey);
 
