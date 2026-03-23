@@ -1,19 +1,19 @@
 {
-	"name": "@wxn0brp/wts",
-	"version": "0.0.1",
-	"main": "./index.js",
-	"type": "module",
-	"license": "MIT",
-	"private": true,
-	"scripts": {
-		"build": "npx tsc && npx tsc-alias"
-	},
-	"workspaces": [
-		"packages/*"
-	],
-	"devDependencies": {
-		"@types/node": "*",
-		"tsc-alias": "*",
-		"typescript": "*"
-	}
+    "name": "@wxn0brp/wts",
+    "version": "0.0.1",
+    "main": "./index.js",
+    "type": "module",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "build": "npx tsc && npx tsc-alias"
+    },
+    "workspaces": [
+        "packages/*"
+    ],
+    "devDependencies": {
+        "@types/node": "*",
+        "tsc-alias": "*",
+        "typescript": "^5"
+    }
 }
