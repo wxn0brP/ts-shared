@@ -27,7 +27,7 @@ export function changeStringToFunction(func: string) {
     }
 }
 
-export function deserializeFunctions(data: Record<string, any>, keys: string[][]): Record<string, any> | any[] {
+export function deserializeFunctions(data: Record<string, any>, keys: string[][]) {
     const setAtPath = (obj: Record<string, any>, segments: string[], value: any) => {
         let currentLevel = obj;
 
