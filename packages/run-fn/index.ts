@@ -27,45 +27,29 @@ export function changeStringToFunction(func: string) {
     }
 }
 
-export function deserializeFunctions(data: Record<string, any>, keys: string[]): Record<string, any> | any[] {
-    const setAtPath = (obj: Record<string, any>, path: string, value: any) => {
-        const segments = path.split(".").map(segment => segment.replace(/\[dot\]/g, "."));
+export function deserializeFunctions(data: Record<string, any>, keys: string[][]): Record<string, any> | any[] {
+    const setAtPath = (obj: Record<string, any>, segments: string[], value: any) => {
         let currentLevel = obj;
 
         for (let i = 0; i < segments.length - 1; i++) {
             const segment = segments[i];
-            if (Array.isArray(currentLevel)) {
-                const index = parseInt(segment, 10);
-                if (!currentLevel[index]) currentLevel[index] = {};
-                currentLevel = currentLevel[index];
-            } else if (!currentLevel[segment]) {
-                currentLevel[segment] = {};
-                currentLevel = currentLevel[segment];
-            } else {
-                currentLevel = currentLevel[segment];
-            }
+            if (!currentLevel[segment]) currentLevel[segment] = {};
+            currentLevel = currentLevel[segment];
         }
 
         currentLevel[segments[segments.length - 1]] = value;
     };
 
-    const getAtPath = (obj: Record<string, any>, path: string) => {
-        const segments = path.split(".").map(key => key.replace(/\[dot\]/g, "."));
-        return segments.reduce((acc, key) => {
-            if (Array.isArray(acc)) {
-                const index = parseInt(key, 10);
-                return acc[index];
-            }
-            return acc && acc[key];
-        }, obj);
+    const getAtPath = (obj: Record<string, any>, segments: string[]) => {
+        return segments.reduce((acc, key) => acc && acc[key], obj);
     };
 
-    keys.forEach((keyPath) => {
-        const value = getAtPath(data, keyPath);
+    keys.forEach((segments) => {
+        const value = getAtPath(data, segments);
 
         if (typeof value === "string") {
             const fn = changeStringToFunction(value);
-            setAtPath(data, keyPath, fn);
+            setAtPath(data, segments, fn);
         } else if (typeof value === "object" && value !== null) {
             if (Array.isArray(value)) {
                 value.forEach((item, index) => {
