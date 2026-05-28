@@ -14,6 +14,6 @@
     "devDependencies": {
         "@wxn0brp/db-core": ">=0.9.0",
         "@types/node": "*",
-        "typescript": "^5"
+        "typescript": "^6.0.0"
     }
 }
